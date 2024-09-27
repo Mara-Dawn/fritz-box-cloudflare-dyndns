@@ -28,10 +28,25 @@ docker compose up
 
 ### Configure your FRITZ!Box
 
-| FRITZ!Box Setting | Value                                                                                                   | Description                                                                                                                          |
-| ----------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| Update URL        | `https://your.host.here:8070/?token=<pass>&records=www,test,home&zone=example.com&ipv4=<ipaddr>&ipv6=<ip6addr>`     | Replace the URL parameter `records` and `zone` with your domain name. If required you can omit either the `ipv4` or `ipv6` URL parameter. Multiple records are separated by a `,`. |
-| Domain Name       | www.example.com                                                                                         | The FQDN from the URL parameter `record` and `zone`.                                                                                 |
-| Username          | name                                                                                                    | You can choose whatever value you want.                                                                                              |
-| Password          | ●●●●●●                                                                                                  | The API token you’ve created earlier.                                                                                                |
+Navigate to Internet > Permit Access > DynDNS in your router web interface.
 
+#### Update URL
+```https://your.host.here:8070/?token=<pass>&records=www,test,home&zone=example.com&ipv4=<ipaddr>&ipv6=<ip6addr>```
+
+Replace the URL parameter `records` and `zone` with your domain name.
+If required you can omit either the `ipv4` or `ipv6` URL parameter.
+Multiple records are separated by a `,`.
+Leave the parts in `< >` as is, they will be filled out by your router automatically.
+
+#### Domain Name
+```example.com```
+
+The FQDN from the URL parameter `record` and `zone`.
+
+#### Username
+
+Does not matter, you can enter whaterver you want.
+
+#### Password
+
+Your ClourFlare API token goes here.
