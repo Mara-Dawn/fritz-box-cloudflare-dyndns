@@ -1,18 +1,10 @@
-FROM registry.semaphoreci.com/golang:1.23.1 as builder
+FROM golang:1.23.1
 
-ENV APP_HOME /app
+WORKDIR /app
 
-WORKDIR "$APP_HOME"
-COPY . .
-
+COPY go.mod go.sum ./
 RUN go mod download
-RUN go mod verify
-RUN go build -o app
 
-FROM registry.semaphoreci.com/golang:1.21.1
+COPY *.go ./
 
-ENV APP_HOME /app
-RUN mkdir -p "$APP_HOME"
-WORKDIR "$APP_HOME"
-
-COPY --from=builder "$APP_HOME"/app $APP_HOME
+RUN CGO_ENABLED=0 GOOS=linux go build -o ./app

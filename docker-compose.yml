@@ -6,5 +6,5 @@ services:
       dockerfile: ./Dockerfile
     network_mode: 'host'
     restart: unless-stopped
-    command: app
+    command: ./app
 
