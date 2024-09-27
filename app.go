@@ -125,7 +125,7 @@ func update_record(
 	proxied := true
 
 	if record == nil {
-		fmt.Printf("No existing %s record found for %s. Creating new one.\n", record_type, url)
+		fmt.Printf("  No existing %s record found for %s. Creating new one.\n", record_type, url)
 		_, err := api.CreateDNSRecord(
 			ctx,
 			cloudflare.ZoneIdentifier(zone_id),
@@ -140,9 +140,9 @@ func update_record(
 			return err
 		}
 	} else {
-		fmt.Printf("Existing %s record found for %s.\n", record_type, url)
+		fmt.Printf("  Existing %s record found for %s.\n", record_type, url)
 		if content != record.Content {
-			fmt.Printf("Updating %s record for %s: %s -> %s\n", record_type, url, record.Content, content)
+			fmt.Printf("  Updating %s record for %s: %s -> %s\n", record_type, url, record.Content, content)
 			_, err := api.UpdateDNSRecord(
 				ctx,
 				cloudflare.ZoneIdentifier(zone_id),
@@ -205,7 +205,7 @@ func parse_params(req *http.Request) (*Parameters, error) {
 
 func ddns(w http.ResponseWriter, req *http.Request) {
 	ctx := req.Context()
-	fmt.Println("server: ddns handler started")
+	fmt.Println("\nserver: ddns handler started")
 	defer fmt.Println("server: ddns handler ended")
 
 	done := make(chan bool, 1)
