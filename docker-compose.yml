@@ -6,7 +6,5 @@ services:
       dockerfile: ./Dockerfile
     network_mode: 'host'
     restart: unless-stopped
-    # ports:
-    #   - '8070:8070'
-    command: python app.py
+    command: app
 

@@ -1,8 +1,18 @@
-FROM python:3-alpine
+FROM registry.semaphoreci.com/golang:1.23.1 as builder
 
-WORKDIR /app
+ENV APP_HOME /app
 
-COPY requirements.txt ./
-RUN pip install --no-cache-dir -r requirements.txt
+WORKDIR "$APP_HOME"
+COPY . .
 
-COPY app.py ./
+RUN go mod download
+RUN go mod verify
+RUN go build -o app
+
+FROM registry.semaphoreci.com/golang:1.21.1
+
+ENV APP_HOME /app
+RUN mkdir -p "$APP_HOME"
+WORKDIR "$APP_HOME"
+
+COPY --from=builder "$APP_HOME"/app $APP_HOME
