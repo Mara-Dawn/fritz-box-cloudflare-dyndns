@@ -169,7 +169,7 @@ func parse_params(req *http.Request) (*Parameters, error) {
 
 	records := strings.Split(record, ",")
 
-	fmt.Printf("token: %s\n", token)
+	// fmt.Printf("token: %s\n", token)
 	fmt.Printf("zone: %s\n", zone)
 	fmt.Printf("records: %s\n", records)
 	fmt.Printf("ipv4: %s\n", ipv4)
