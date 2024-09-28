@@ -5,7 +5,7 @@ This containerized server application lets you update your CloudFlare DNS record
 To develop this application I was inspired by [cloudflare-dyndns](https://github.com/L480/cloudflare-dyndns/), which sadly lacked a few features important to me.
 I took the chance to write my own version as my first Go project to learn the language.
 
-To change the port, edit the `WEB_PORT` env variable and the port bindings inside the `docker-compose.yml`. By default a DNS entry for the zone only will be created as well (e.g. `example.com` for `www.example.com`)
+By default a DNS entry for the zone only will be created as well (e.g. `example.com` for `www.example.com`)
 
 ## Features
 * Update your IPv4 and IPv6 DNS entries dynamically, right when your router notices them change.
@@ -18,13 +18,22 @@ To change the port, edit the `WEB_PORT` env variable and the port bindings insid
 
 Create a [Cloudflare API token](https://dash.cloudflare.com/profile/api-tokens) with **read permissions** for the scope `Zone.Zone` and **edit permissions** for the scope `Zone.DNS`.
 
-### Run with Docker Compose
+### Option 1: Run hosted docker image
 
-Clone the repository and run the following command:
+Use the prebuilt docker image. Adjust the ports as needed.
 
 ```bash
-docker compose up
+docker run -e WEB_PORT=8070 -p 8070:8070 ghcr.io/mara-dawn/fritz-box-cloudflare-dyndns:latest
 ```
+
+### Option 2: Run with docker compose
+
+Download the latest release .zip, extract it and run the following command:
+
+```bash
+docker compose up --build
+```
+To change the port, edit the `WEB_PORT` env variable and the port bindings inside the `docker-compose.yml`. 
 
 ### Configure your FRITZ!Box
 
