@@ -5,6 +5,8 @@ services:
       context: .
       dockerfile: ./Dockerfile
     network_mode: 'host'
+    environment:
+      WEB_PORT: "8070"
     restart: unless-stopped
     command: ./app
 

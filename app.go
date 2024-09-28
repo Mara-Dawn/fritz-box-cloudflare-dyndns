@@ -1,11 +1,15 @@
 package main
 
 import (
+	"bytes"
 	"context"
 	"fmt"
-	"github.com/cloudflare/cloudflare-go"
 	"net/http"
+	"os"
 	"strings"
+	"time"
+
+	"github.com/cloudflare/cloudflare-go"
 )
 
 type Parameters struct {
@@ -25,6 +29,7 @@ func handle_ddns_change(
 	done chan<- bool,
 	failed chan<- error,
 	status chan<- int) {
+	fmt.Println(time.Now().Format(time.RFC850))
 
 	parameters, err := parse_params(req)
 	if err != nil {
@@ -237,5 +242,15 @@ func main() {
 	http.HandleFunc("/health", health)
 	http.HandleFunc("/", ddns)
 
-	http.ListenAndServe(":8070", nil)
+	port, exists := os.LookupEnv("WEB_PORT")
+	if !exists {
+		port = "8070"
+	}
+	fmt.Printf("listening on port %s\n", port)
+
+	var buffer bytes.Buffer
+	buffer.WriteString(":")
+	buffer.WriteString(port)
+
+	http.ListenAndServe(buffer.String(), nil)
 }
