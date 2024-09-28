@@ -4,9 +4,10 @@ services:
     build:
       context: .
       dockerfile: ./Dockerfile
-    network_mode: 'host'
     environment:
       WEB_PORT: "8070"
+    ports:
+      - 8070:8070
     restart: unless-stopped
     command: ./app
 
