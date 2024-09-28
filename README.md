@@ -5,7 +5,7 @@ This containerized server application lets you update your CloudFlare DNS record
 To develop this application I was inspired by [cloudflare-dyndns](https://github.com/L480/cloudflare-dyndns/), which sadly lacked a few features important to me.
 I took the chance to write my own version as my first Go project to learn the language.
 
-To change the port, edit the `WEB_PORT` env variable inside the `docker-compose.yml`. By default a DNS entry for the zone only will be created as well (e.g. `example.com` for `www.example.com`)
+To change the port, edit the `WEB_PORT` env variable and the port bindings inside the `docker-compose.yml`. By default a DNS entry for the zone only will be created as well (e.g. `example.com` for `www.example.com`)
 
 ## Features
 * Update your IPv4 and IPv6 DNS entries dynamically, right when your router notices them change.
