@@ -18,7 +18,7 @@ By default a DNS entry for the zone only will be created as well (e.g. `example.
 
 Create a [Cloudflare API token](https://dash.cloudflare.com/profile/api-tokens) with **read permissions** for the scope `Zone.Zone` and **edit permissions** for the scope `Zone.DNS`.
 
-### Option 1: Run hosted docker image
+### Option 1: Use my hosted instance
 
 Use the server instance hosted by me. Just replace the update URL below with this one, no need to download or run anything yourself:
 
