@@ -20,13 +20,21 @@ Create a [Cloudflare API token](https://dash.cloudflare.com/profile/api-tokens) 
 
 ### Option 1: Run hosted docker image
 
+Use the server instance hosted by me. Just replace the update URL below with this one, no need to download or run anything yourself:
+
+```
+https://ddns.mara.cafe/?token=<pass>&records=www,test,home&zone=example.com&ipv4=<ipaddr>&ipv6=<ip6addr>
+```
+
+### Option 2: Run hosted docker image
+
 Use the prebuilt docker image. Adjust the ports as needed.
 
 ```bash
 docker run -e WEB_PORT=8070 -p 8070:8070 ghcr.io/mara-dawn/fritz-box-cloudflare-dyndns:latest
 ```
 
-### Option 2: Run with docker compose
+### Option 3: Run with docker compose
 
 Download the latest release .zip, extract it and run the following command:
 
