@@ -1,4 +1,4 @@
-# Fritz.Box CloudFlare DynDNS Server
+# FRITZ!Box CloudFlare DynDNS Server
 
 This containerized server application lets you update your CloudFlare DNS records with your FRITZ!Box router.
 
