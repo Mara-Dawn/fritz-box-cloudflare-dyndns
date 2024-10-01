@@ -1,4 +1,4 @@
-# FRITZ!Box CloudFlare DynDNS Server
+# DynDNS Middleware for FRITZ!Box and CloudFlare
 
 This containerized server application lets you update your CloudFlare DNS records with your FRITZ!Box router.
 
@@ -18,7 +18,7 @@ By default a DNS entry for the zone only will be created as well (e.g. `example.
 
 Create a [Cloudflare API token](https://dash.cloudflare.com/profile/api-tokens) with **read permissions** for the scope `Zone.Zone` and **edit permissions** for the scope `Zone.DNS`.
 
-### Option 1: Use my hosted instance
+### Option 1: Use my free hosted instance
 
 Use the server instance hosted by me. Just replace the update URL below with this one, no need to download or run anything yourself:
 
